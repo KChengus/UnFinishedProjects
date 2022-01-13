@@ -1,9 +1,8 @@
-import javafx.event.EventHandler;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.Scene;
 import javafx.event.ActionEvent;
 
@@ -14,7 +13,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
-import java.net.*;
 // import javafx.application.Platform;
 // import javafx.scene.layout.StackPane;
 public class MainGUI extends Application {

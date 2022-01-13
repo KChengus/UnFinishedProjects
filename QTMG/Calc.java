@@ -1,10 +1,12 @@
+import java.util.InputMismatchException;
+
 public class Calc {
     Expressions expressions = new Expressions();
 
     public int getAnswer() {
         String[] splitExp = expressions.exp.split(" ");
         String op = splitExp[1];
-
+        op = "k";
         switch (op) {
         case ("+"):
             return Integer.parseInt(splitExp[0]) + Integer.parseInt(splitExp[2]);
@@ -12,13 +14,14 @@ public class Calc {
             return Integer.parseInt(splitExp[0]) - Integer.parseInt(splitExp[2]);
         case ("*"):
             return Integer.parseInt(splitExp[0]) * Integer.parseInt(splitExp[2]);
-        case ("/"):
-            
-            return Integer.parseInt(splitExp[0]) / Integer.parseInt(splitExp[2]);
+
         default:
-            // TODO find better error handling
-            return Integer.MAX_VALUE;
+            if (!op.equals("/") ) {
+                throw new InputMismatchException();
+            }
+            return Integer.parseInt(splitExp[0]) / Integer.parseInt(splitExp[2]);
         }
+
     }
 
 

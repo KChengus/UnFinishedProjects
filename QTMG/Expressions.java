@@ -1,14 +1,16 @@
 import java.util.Random;
 public class Expressions {
-    char[] operations = {'+', '-', '*'};
+    char[] operations = {'+', '-', '*', '/'};
     Random rand = new Random();
     int lowerLimit = 1;
-    int upperLimit = 1000;
+    int upperLimit = 100;
     String exp = "1 + 1";
 
     public int generateNum() {
         rand.setSeed(rand.nextInt(100000));
         int num = rand.nextInt(upperLimit - lowerLimit) + lowerLimit;
+
+        // easier calculations for numbers 100 or above
         if (num >= 100) {
             num = num / 10 * 10;
         }
