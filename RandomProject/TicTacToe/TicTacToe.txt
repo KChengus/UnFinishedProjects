@@ -1,0 +1,14 @@
+TIC TAC TOE
+[
+    [0, 0, 0]
+    [0, 0, 0]
+    [0, 0, 0]
+]
+
+0 = empty
+1 = "o"
+-1 = "x"
+
+win by diagonal, vertical and horizontal
+turn based game
+
