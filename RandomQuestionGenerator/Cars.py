@@ -6,6 +6,7 @@ class Cars(Question):
     
     def __init__(self):
         self.questionList = self.getQuestionFromFile(self.__str__() + ".txt")
+        print("initialized cars")
 
     def __str__(self):
         return "Cars"

@@ -5,10 +5,9 @@ class Question:
         text = ""
         try:
 
-            with open( "QuestionMap\\" +fileName, "r") as f:
+            with open( "QuestionMap/" +fileName, "r") as f:
                 text = f.read()
 
-            print()
         except Exception as e:
             print(e)
         return text.split("\n")[:-1]
