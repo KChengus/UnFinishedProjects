@@ -9,15 +9,23 @@ from InfluentialPeople import InfluentialPeople
 class RQG:
     
     categories = [Cars, Fashion, Celebs, InfluentialPeople]
-    chosenCategoryIndex = []
+    chosenCategoryIndex = list()
     def __init__(self):
         pass
 
-    def printCategories(self):
+    def categoryInTextForm(self):
+        text = ""
         for i, category in enumerate(self.categories):
-            print(f"{i}. {category()}")
+            text += f"{i}. {category()}\n"
+        return text
 
-    def pickCategory(self):
+    def pickCategoryGUI(self, num):
+        if 0 <= num < len(self.categories):
+            self.chosenCategoryIndex.append(num)
+        print("Chose category number", num)
+
+
+    def pickCategoryInTerminal(self):
         try:
             while True:
                 self.printCategories()
@@ -30,15 +38,16 @@ class RQG:
         except Exception as e:
             print(e)
         
-    def getRandomCategory(self):
-        n = random.randrange(0, len(self.categories))
-        randomPickIndex = self.chosenCategoryIndex[n]
-        return self.categories[randomPickIndex]()
+    def getRandomCategoryFromChosenCategories(self):
+        
+        n = random.choice(self.chosenCategoryIndex)
+        return self.categories[n]()
         
         
     def mainRun(self):
         self.pickCategory()
         print(self.getRandomCategory())
+        self.printCategories()
     
 
 
