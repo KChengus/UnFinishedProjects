@@ -1,13 +1,9 @@
 from kivy.app import App
-from kivy.uix.stacklayout import StackLayout
 from kivy.lang.builder import Builder
-from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.textinput import TextInput
 from kivy.clock import Clock
 from kivy.core.window import Window
 import datetime
-from collections import OrderedDict
 
 from pygments import highlight
 Builder.load_file("main.kv")
@@ -29,21 +25,23 @@ class MainWindow(BoxLayout):
 
         timeNow = datetime.datetime.now()
         if self.active:
-            if (timeNow.hour == endingTimeHour and timeNow.minute > endingTimeMinute):
+            if (timeNow.hour == endingTimeHour and timeNow.minute >= endingTimeMinute) or timeNow.hour > endingTimeHour:
                 self.active = False
                 self.ids[self.highlightWidgetId].background_color = 0, 0, 0, 1
                 self.l.pop(0)
+                
                 if len(self.l) <= 0:
                     App.get_running_app().stop()
                     Window.close()
                     return
+            
         else:
-            if (timeNow.hour >= startingTimeHour and timeNow.minute >= startingTimeMinute):
+            
+            if (timeNow.hour == startingTimeHour and timeNow.minute >= startingTimeMinute) or timeNow.hour > startingTimeHour:
                 self.active = True
                 self.highlightWidgetId = self.timeActivityIds.pop(0)
                 self.ids[self.highlightWidgetId].background_color = 0.6, .1, .1, 1
-
-
+        
         self.ids.displayCurrentTime.text = datetime.datetime.now().strftime('%H : %M')
 
 
@@ -61,14 +59,8 @@ class MainWindow(BoxLayout):
             startingTime, hyphen, endingTime = text.split(" ")
             self.l.append((startingTime, endingTime))
             
-            
-
-
         Clock.unschedule(self.increment_time)
         Clock.schedule_interval(self.increment_time, 2)
-
-
-
 
 
 class PlanApp(App):
