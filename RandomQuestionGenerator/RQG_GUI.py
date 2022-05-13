@@ -23,6 +23,9 @@ Improvements
 
 
 """
+# display variables
+btnWidth = 20;   
+
 
 canvas= tk.Canvas(root, width= 400, height= 300)
 canvas.pack()
@@ -41,10 +44,10 @@ def displayCategories():
     tk.Label(toplvl, text=rqg.categoryInTextForm()).pack()
 
     # MAKE A LOOP FOR THIS V
-    tk.Button(toplvl, text="0", command=lambda: categoryChosen("0")).pack()  
-    tk.Button(toplvl, text="1", command=lambda: categoryChosen("1")).pack()  
-    tk.Button(toplvl, text="2", command=lambda: categoryChosen("2")).pack()  
-    tk.Button(toplvl, text="3", command=lambda: categoryChosen("3")).pack()  
+    tk.Button(toplvl, text="0", width=btnWidth, command=lambda: categoryChosen("0")).pack()  
+    tk.Button(toplvl, text="1", width=btnWidth, command=lambda: categoryChosen("1")).pack()  
+    tk.Button(toplvl, text="2", width=btnWidth, command=lambda: categoryChosen("2")).pack()  
+    tk.Button(toplvl, text="3", width=btnWidth, command=lambda: categoryChosen("3")).pack()  
 
 # image functions
 def getImagePath(imageFolder):
@@ -76,17 +79,13 @@ def getQuestion():
     print(question)
     generateImage(question)
 
-#def clickedGenerateQuestion():
-   
-  
+
+
 
 lbl = tk.Label(root, text="this is just a temporary place holder")
 lbl.pack()
 
-anotherbtn = tk.Button(root, text="another button")
-anotherbtn.pack()
-
-displayCatBtn = tk.Button(root, text="display category", command=displayCategories)
+displayCatBtn = tk.Button(root, text="display category", width=btnWidth, command=displayCategories)
 displayCatBtn.pack()
 
 getQuestionBtn = tk.Button(root, text="get question", command=getQuestion)

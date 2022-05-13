@@ -7,8 +7,8 @@ from time import sleep
 import os
 
 # change path to where your chromedriver is
-PATH = "/Users/kevincheng/Documents/Programming/RandomThings/chromedriver"
-#PATH = "D:\\Downloads\\random\\chromedriver.exe"
+#PATH = "/Users/kevincheng/Documents/Programming/RandomThings/chromedriver"
+PATH = "D:\\Downloads\\random\\chromedriver.exe"
 sleepTimeShort = 0.2
 sleepTimeLong = 1
 
